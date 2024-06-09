@@ -2,8 +2,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Ball {
-    static final int MAX_SPEED = 7;
+    static final int MAX_SPEED = 14;
     private int x, y, cx, cy, size, speed;
+    private int impactY;
     private Color colour;
 
     public Ball(int x, int y, int cx, int cy, int size, int speed, Color colour) {
@@ -14,6 +15,7 @@ public class Ball {
         this.size = size;
         this.speed = speed;
         this.colour = colour;
+        impactY = y;
     }
 
     public int getX() {
@@ -32,8 +34,20 @@ public class Ball {
         this.y = y;
     }
 
+    public int getImpactY() {
+        return this.impactY;
+    }
+
+    public int getCx() {
+        return this.cx;
+    }
+
     public void setCx(int cx) {
         this.cx = cx;
+    }
+
+    public int getCy() {
+        return this.cy;
     }
     
     public void setCy(int cy) {
@@ -48,6 +62,10 @@ public class Ball {
         this.speed = speed;
     }
 
+    public int getMaxSpeed() {
+        return MAX_SPEED;
+    }
+
     public int getSize() {
         return this.size;
     }
@@ -57,11 +75,11 @@ public class Ball {
         if(speed < MAX_SPEED){
             //increase the speed by one
             speed ++;
+            //System.out.println("Speed is " + speed + "/" + MAX_SPEED);
 
             //update cy and cx with the new speed
             cx = (cx / Math.abs(cx)*speed);
             cy = (cy / Math.abs(cy)*speed);
-
         }
 
     }
@@ -89,6 +107,9 @@ public class Ball {
 
     public void reverseX() {
         this.cx *= -1;
+        if (this.cx > 0) {
+            this.impactY = this.y;
+        }
     }
 
     public void reverseY() {

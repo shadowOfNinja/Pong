@@ -16,9 +16,17 @@ public class Paddle {
         this.color = color;
     }
 
+    public int getX() {
+        return this.x;
+    }
+
+    public int getCenterY() {
+        return this.y + this.height / 2;
+    }
+
     public void moveTowards(int moveToY) {
         //find the location of the center of the paddle
-        int centerY = y + height / 2;
+        int centerY = getCenterY();
 
         //determine if we need to move more than the speed away from where we are now
         if(Math.abs(centerY - moveToY) > speed){

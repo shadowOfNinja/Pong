@@ -16,13 +16,10 @@ public class App {
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 		//the size of the game will be 480x640, the size of the JFrame needs to be slightly larger
-        f.setSize(650,495);
+        f.setSize(650,515);
 
 		//show the window
         f.setVisible(true);
-
-        //the size of the game will be 480x640, the size of the JFrame needs to be slightly larger
-        f.setSize(650,495);
 
 		//make the new PongGame
         PongGame game = new PongGame();
